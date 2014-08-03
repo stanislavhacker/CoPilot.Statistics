@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Data\FillStats.cs" />
     <Compile Include="Data\FuelStats.cs" />
+    <Compile Include="Data\RepairsStats.cs" />
     <Compile Include="Data\RouteStats.cs" />
     <Compile Include="Data\StateStats.cs" />
     <Compile Include="Graph\GraphData.cs" />

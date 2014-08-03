@@ -55,7 +55,7 @@ namespace CoPilot.Statistics
             this.Records = records;
         }
 
-        #region FUEL
+        #region FUEL, REPAIRS
 
         /// <summary>
         /// Fuel stats
@@ -64,6 +64,15 @@ namespace CoPilot.Statistics
         public FuelStats getFuelStats()
         {
             return new FuelStats(this.records);
+        }
+
+        /// <summary>
+        /// Repairs stats
+        /// </summary>
+        /// <returns></returns>
+        public RepairsStats getRepairStats()
+        {
+            return new RepairsStats(this.records);
         }
 
         #endregion
