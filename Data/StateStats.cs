@@ -59,12 +59,12 @@ namespace CoPilot.Statistics.Data
             {
                 return AvarageSpeed(this.StartDate, this.EndDate);
             }
-            return this.Records.States.Sum(e => e.Speed) / this.Records.States.Count;
+            return this.Records.States.Count() == 0 ? 0 : this.Records.States.Sum(e => e.Speed) / this.Records.States.Count;
         }
         private Double AvarageSpeed(DateTime start, DateTime end)
         {
             var records = this.Records.States.Where(e => e.Time > start && e.Time <= end);
-            return records.Sum(e => e.Speed) / records.Count();
+            return records.Count() == 0 ? 0 : records.Sum(e => e.Speed) / records.Count();
         }
 
         #endregion
