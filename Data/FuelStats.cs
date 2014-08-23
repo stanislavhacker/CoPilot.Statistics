@@ -53,6 +53,16 @@ namespace CoPilot.Statistics.Data
                 .Sum((fill) => { return fill.Price.Currency == currency ? fill.Price.Value : RateExchange.GetExchangeRateFor(fill.Price.Currency, currency) * fill.Price.Value; });
         }
 
+        /// <summary>
+        /// Total refueled
+        /// </summary>
+        /// <returns></returns>
+        public double TotalRefueled()
+        {
+            return this.Records.Fills
+                .Sum((fill) => { return fill.Refueled; });
+        }
+
         #endregion
 
         #region GRAPHS
@@ -101,5 +111,6 @@ namespace CoPilot.Statistics.Data
         }
 
         #endregion
+
     }
 }
