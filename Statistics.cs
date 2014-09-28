@@ -142,7 +142,7 @@ namespace CoPilot.Statistics
             //clear wrong routes
             for (var i = routes.Count - 1; i >= 0; i--)
             {
-                if (routes[i].getStates().Count < 10)
+                if (routes[i].getStates().Count < 10 || routes[i].TraveledDistance < 0.2)
                 {
                     routes.RemoveAt(i);
                 }
