@@ -40,14 +40,59 @@ namespace CoPilot.Statistics.Data
 
 
         /// <summary>
-        /// DateTime
+        /// Start DateTime
         /// </summary>
-        private DateTime date = DateTime.MinValue;
-        public DateTime Date
+        private DateTime startDate = DateTime.MinValue;
+        public DateTime StartDate
         {
             get
             {
-                return date;
+                return startDate;
+            }
+        }
+
+        /// <summary>
+        /// End DateTime
+        /// </summary>
+        private DateTime endDate = DateTime.MinValue;
+        public DateTime EndDate
+        {
+            get
+            {
+                return endDate;
+            }
+        }
+
+        /// <summary>
+        /// ConsumedFuel
+        /// </summary>
+        public Double ConsumedFuel
+        {
+            get
+            {
+                return this.getConsumedFuel();
+            }
+        }
+
+        /// <summary>
+        /// TraveledDistance
+        /// </summary>
+        public Double TraveledDistance
+        {
+            get
+            {
+                return this.getTraveledDistance();
+            }
+        }
+
+        /// <summary>
+        /// Distance
+        /// </summary>
+        public Distance Distance
+        {
+            get
+            {
+                return this.getDistanceSetting();
             }
         }
 
@@ -62,7 +107,8 @@ namespace CoPilot.Statistics.Data
         {
             this.statistics = statistics;
             this.states = states;
-            this.date = date;
+            this.startDate = date;
+            this.endDate = states.Last().Time;
         }
 
         /// <summary>
@@ -75,19 +121,10 @@ namespace CoPilot.Statistics.Data
         }
 
         /// <summary>
-        /// Get date
-        /// </summary>
-        /// <returns></returns>
-        public DateTime getDate()
-        {
-            return this.date;
-        }
-
-        /// <summary>
         /// Get consumed fuel
         /// </summary>
         /// <returns></returns>
-        public Double getConsumedFuel()
+        private Double getConsumedFuel()
         {
             Double distance = this.getTraveledDistance();
             Double avarage = this.statistics.getFuelStats().AverageConsumption(this.statistics.getDistanceSetting());
@@ -99,7 +136,7 @@ namespace CoPilot.Statistics.Data
         /// Traveled distance
         /// </summary>
         /// <returns></returns>
-        public Double getTraveledDistance()
+        private Double getTraveledDistance()
         {
             List<State> states = this.getStates();
             Double distance = 0;
@@ -123,7 +160,7 @@ namespace CoPilot.Statistics.Data
         /// Get distance
         /// </summary>
         /// <returns></returns>
-        public Distance getDistanceSetting()
+        private Distance getDistanceSetting()
         {
             return this.statistics.getDistanceSetting();
         }
