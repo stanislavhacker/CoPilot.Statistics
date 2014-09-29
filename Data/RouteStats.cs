@@ -97,6 +97,22 @@ namespace CoPilot.Statistics.Data
             }
         }
 
+        /// <summary>
+        /// States
+        /// </summary>
+        private List<State> tempStates = new List<State>();
+        public List<State> States
+        {
+            get
+            {
+                return tempStates;
+            }
+            set
+            {
+                tempStates = value;
+            }
+        }
+
         #endregion
 
         /// <summary>
