@@ -1,4 +1,5 @@
 ﻿using CoPilot.Core.Data;
+using CoPilot.Core.Utils;
 using GpsCalculation;
 using System;
 using System.Collections.Generic;
@@ -153,7 +154,7 @@ namespace CoPilot.Statistics.Data
                 }
             }
 
-            return distance;
+            return distance / DistanceExchange.GetExchangeDistanceFor(DistanceExchange.CurrentDistance, Core.Data.Distance.Km);
         }
 
         /// <summary>
