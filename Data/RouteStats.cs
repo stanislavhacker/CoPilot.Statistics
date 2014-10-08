@@ -125,7 +125,7 @@ namespace CoPilot.Statistics.Data
             this.statistics = statistics;
             this.states = states;
             this.startDate = date;
-            this.endDate = states.Last().Time;
+            this.endDate = states.Count > 0 ? states.Last().Time : date;
         }
 
         /// <summary>
