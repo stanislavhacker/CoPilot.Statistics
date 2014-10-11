@@ -30,7 +30,7 @@ namespace CoPilot.Statistics.Data
         /// <param name="position"></param>
         public PositionStats(String position)
         {
-            if (position != null)
+            if (position != null && position != "Unknown")
             {
                 var pos = position.Split(',');
 
