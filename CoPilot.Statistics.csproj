@@ -44,6 +44,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\CircleStats.cs" />
     <Compile Include="Data\FillStats.cs" />
     <Compile Include="Data\FuelStats.cs" />
     <Compile Include="Data\RepairsStats.cs" />

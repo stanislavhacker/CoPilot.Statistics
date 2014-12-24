@@ -271,6 +271,32 @@ namespace CoPilot.Statistics
 
         #endregion
 
+        #region CIRCUTS
+
+        /// <summary>
+        /// Get fills
+        /// </summary>
+        /// <returns></returns>
+        public List<CircleStats> getCircuits()
+        {
+            return this.Records.Times.Circuits
+                .Select<Circuit, CircleStats>((circle) => { return new CircleStats(this.Records, circle); })
+                .ToList();
+        }
+
+        /// <summary>
+        /// Get fills
+        /// </summary>
+        /// <returns></returns>
+        public List<CircleStats> getCircuits(DateTime start, DateTime end)
+        {
+            return this.Records.Times.Circuits
+                .Where(e => e.Start > start && e.Start <= end)
+                .Select<Circuit, CircleStats>((circle) => { return new CircleStats(this.Records, circle); })
+                .ToList();
+        }
+
+        #endregion
 
 
         #region Others

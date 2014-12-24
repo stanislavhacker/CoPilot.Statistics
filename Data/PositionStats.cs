@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GpsCalculation;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -41,6 +42,21 @@ namespace CoPilot.Statistics.Data
             else
             {
                 this.Unknow = true;
+            }
+        }
+
+        /// <summary>
+        /// Position stats
+        /// </summary>
+        public GeoPosition getPosition()
+        {
+            if (!this.Unknow)
+            {
+                return new GeoPosition(this.Latitude, this.Longitude, 10);
+            }
+            else
+            {
+                return new GeoPosition(0, 0, 0);
             }
         }
     }
