@@ -57,6 +57,7 @@
     <Compile Include="Data\VideoStats.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Statistics.cs" />
+    <Compile Include="Utils\CircuitGroup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SharpKml">

@@ -1,5 +1,6 @@
 ﻿using CoPilot.Core.Data;
 using CoPilot.Statistics.Data;
+using CoPilot.Statistics.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -294,6 +295,59 @@ namespace CoPilot.Statistics
                 .Where(e => e.Start > start && e.Start <= end)
                 .Select<Circuit, CircleStats>((circle) => { return new CircleStats(this.Records, circle); })
                 .ToList();
+        }
+
+        /// <summary>
+        /// Get grouped circuits
+        /// </summary>
+        /// <returns></returns>
+        public List<CircuitGroup> getGroupedCircuits()
+        {
+            ObservableCollection<Circuit> circuits = this.Records.Times.Circuits;
+            return Statistics.GroupedCircuits(circuits);
+        }
+
+        /// <summary>
+        /// GroupedCircuits
+        /// </summary>
+        /// <param name="circuits"></param>
+        /// <returns></returns>
+        public static List<CircuitGroup> GroupedCircuits(ObservableCollection<Circuit> circuits)
+        {
+            Dictionary<string, CircuitGroup> groups = new Dictionary<string, CircuitGroup>();
+
+            for (var i = 0; i < circuits.Count; i++)
+            {
+                CircuitGroup group = null;
+                var circuit = circuits[i];
+                var exists = groups.ContainsKey(circuit.Id);
+                //no exists
+                if (!exists)
+                {
+                    group = new CircuitGroup();
+                    //create
+                    group.Laps = new List<double>();
+                    group.States = new List<State>();
+                    //fill
+                    group.Name = circuit.Name;
+                    group.States.AddRange(circuit.States);
+                    group.Circuit = circuit;
+                    //add
+                    groups.Add(circuit.Id, group);
+                }
+                //get
+                group = groups[circuit.Id];
+                //find fastest circle
+                if (group.Circuit.Laps.Min() > circuit.Laps.Min())
+                {
+                    group.Circuit = circuit;
+                }
+                //add laps
+                group.Laps.AddRange(circuit.Laps);
+            }
+
+            //return
+            return groups.Values.ToList();
         }
 
         #endregion
