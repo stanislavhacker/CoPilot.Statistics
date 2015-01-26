@@ -72,17 +72,17 @@ namespace CoPilot.Statistics.Data
         /// </summary>
         /// <param name="currency"></param>
         /// <returns></returns>
-        public GraphData TrendFuelPrices(Currency currency)
+        public GraphData_DateTime TrendFuelPrices(Currency currency)
         {
             //graph data
-            var data = new GraphData();
+            var data = new GraphData_DateTime();
             data.LegendX = "Date";
             data.LegendY = currency.ToString();
 
             foreach (var fill in this.Records.Fills)
             {
                 var price = fill.UnitPrice.Currency == currency ? fill.UnitPrice.Value : RateExchange.GetExchangeRateFor(fill.UnitPrice.Currency, currency) * fill.UnitPrice.Value;
-                data.X.Add(fill.Date.ToString());
+                data.X.Add(fill.Date);
                 data.Y.Add(fill.UnitPrice.Value);
             }
 
@@ -94,16 +94,16 @@ namespace CoPilot.Statistics.Data
         /// </summary>
         /// <param name="currency"></param>
         /// <returns></returns>
-        public GraphData TrendUnitsPerRefill(Currency currency)
+        public GraphData_DateTime TrendUnitsPerRefill(Currency currency)
         {
             //graph data
-            var data = new GraphData();
+            var data = new GraphData_DateTime();
             data.LegendX = "Date";
             data.LegendY = currency.ToString();
 
             foreach (var fill in this.Records.Fills)
             {
-                data.X.Add(fill.Date.ToString());
+                data.X.Add(fill.Date);
                 data.Y.Add(fill.Refueled);
             }
 

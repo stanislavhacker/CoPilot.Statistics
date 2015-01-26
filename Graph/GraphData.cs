@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoPilot.Statistics.Graph
 {
-    public class GraphData
+    public class GraphData_DateTime
     {
         /// <summary>
         /// Y
@@ -16,7 +16,7 @@ namespace CoPilot.Statistics.Graph
         /// <summary>
         /// X
         /// </summary>
-        public List<string> X { get; set; }
+        public List<DateTime> X { get; set; }
 
         /// <summary>
         /// Legend X
@@ -31,9 +31,9 @@ namespace CoPilot.Statistics.Graph
         /// <summary>
         /// Graph data
         /// </summary>
-        public GraphData()
+        public GraphData_DateTime()
         {
-            this.X = new List<string>();
+            this.X = new List<DateTime>();
             this.Y = new List<double>();
         }
  
