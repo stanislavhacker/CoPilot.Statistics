@@ -364,6 +364,15 @@ namespace CoPilot.Statistics
             return this.Records.Distance;
         }
 
+        /// <summary>
+        /// Get unit
+        /// </summary>
+        /// <returns></returns>
+        public Unit getUnitSetting()
+        {
+            return this.Records.Unit;
+        }
+
         #endregion
     }
 }
